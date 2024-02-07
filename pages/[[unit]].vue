@@ -1,7 +1,7 @@
 <script setup>
-// import ContentForLegend from "~/components/elements/ContentForLegend.vue";
-// import UnitInfo from "~/components/unit/UnitInfo.vue";
-// import UnitMain from "~/components/unit/UnitMain.vue";
+import ContentForLegend from "~/components/elements/ContentForLegend.vue";
+import UnitInfo from "~/components/unit/UnitInfo.vue";
+import UnitMain from "~/components/unit/UnitMain.vue";
 
 import fetchUnitInfo from "~/api/fetchUnitInfo.js";
 import { useGlobalStateStore } from "~/stores/globalState.js";
@@ -55,14 +55,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>YUNIT: {{ route.params.unit }}</div>
   <div id="cy" class="right-0 xl:right-[34%] overscroll-none"></div>
   <div id="scroll" class="right-0 xl:right-[34%] overscroll-none">
     <div id="scrollBody">&nbsp;</div>
   </div>
-<!--  <ContentForLegend />-->
-<!--  <ClientOnly>-->
-<!--    <UnitMain />-->
-<!--  </ClientOnly>-->
-<!--  <UnitInfo/>-->
+  <ContentForLegend />
+  <ClientOnly>
+    <UnitMain />
+  </ClientOnly>
+  <UnitInfo/>
 </template>

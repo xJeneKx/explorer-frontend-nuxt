@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useGlobalStateStore } from "../stores/globalState";
 import { EventNames } from "../enum/eventEnums";
 
@@ -10,7 +9,8 @@ export default async function fetchUnitInfo(socket, unit) {
       socket.emit(EventNames.Info, unit, resolve);
     });
   } else {
-    const { data } = await axios.get(`/api/unit/${encodeURIComponent(unit)}`);
+    const { data } = await useFetch(`https://explorer.obyte.org/api/unit/${encodeURIComponent(unit)}`);
+
     return data;
   }
 }
