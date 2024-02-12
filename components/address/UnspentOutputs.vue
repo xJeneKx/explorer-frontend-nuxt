@@ -1,6 +1,5 @@
 <script setup>
-import { getAssetName } from "../../helpers/asset";
-import { useI18n } from "vue-i18n";
+import { getAssetName } from "~/helpers/asset.js";
 
 import Collapse from "../../components/elements/Collapse.vue";
 import Link from "../../components/elements/Link.vue";

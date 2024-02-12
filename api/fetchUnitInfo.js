@@ -9,7 +9,7 @@ export default async function fetchUnitInfo(socket, unit) {
       socket.emit(EventNames.Info, unit, resolve);
     });
   } else {
-    const { data } = await useFetch(`https://explorer.obyte.org/api/unit/${encodeURIComponent(unit)}`);
+    const data = await $fetch(`https://explorer.obyte.org/api/unit/${encodeURIComponent(unit)}`);
 
     return data;
   }

@@ -162,9 +162,9 @@ async function getNextPage() {
   nextPageHandler(result);
 }
 
-watch(() => [route.params.address, route.query.asset || "all"].join("_"), urlHandler, {
-  immediate: true,
-});
+await urlHandler();
+
+watch(() => [route.params.address, route.query.asset || "all"].join("_"), urlHandler);
 
 watch(y, () => {
   if (
@@ -205,7 +205,7 @@ function back() {
 </script>
 
 <template>
-  <div class="w-full bg-white absolute h-full p-1 sm:p-4 pt-4" style="z-index: 1100">
+  <div class="w-full bg-white absolute h-full p-1 sm:p-4 pt-4" style="z-index: 1100">    
     <div class="max-w-6xl mx-auto w-full text-sm md:text-base" ref="el">
       <div class="text-right pr-4">
         <a @click="back" class="link link-hover text-blue-500">{{ t("closeButton") }}</a>
@@ -295,7 +295,7 @@ function back() {
                 </option>
               </select>
             </div>
-            <UnspentOutputs v-if="view === 'UTXO'" class="mt-4" :unspent="data.unspent" />
+            <UnspentOutputs v-if="view === 'UTXO'" :unspent="data.unspent"/>
           </div>
           <div class="flex justify-center">
             <BalancesChart
@@ -307,12 +307,12 @@ function back() {
           </div>
         </div>
         <PaymentList
-          class="mt-12"
-          ref="PL"
-          :unit-assets="data.unitAssets"
-          :obj-transactions="data.objTransactions"
-          :address="data.address"
-          :view="view"
+            class="mt-12"
+            ref="PL"
+            :unit-assets="data.unitAssets"
+            :obj-transactions="data.objTransactions"
+            :address="data.address"
+            :view="view"
         />
       </div>
     </div>

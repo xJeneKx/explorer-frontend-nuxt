@@ -30,16 +30,14 @@ defineExpose({
   addNewTransactions,
 });
 
-onMounted(() => {
-  addNewTransactions(props.unitAssets, props.objTransactions);
-});
+addNewTransactions(props.unitAssets, props.objTransactions);
 
 watch(
-  () => props.view,
-  () => {
-    transactions.value = [];
-    addNewTransactions(props.unitAssets, props.objTransactions);
-  }
+    () => props.view,
+    () => {
+      transactions.value = [];
+      addNewTransactions(props.unitAssets, props.objTransactions);
+    }
 );
 </script>
 
@@ -51,13 +49,13 @@ watch(
       </div>
       <div v-show="transactions.length">
         <div v-if="view === 'UTXO'">
-          <transition-group name="list" tag="div">
+          <TransitionGroup name="list" tag="div">
             <div v-for="t in transactions" :key="t.rowid">
-              <UTXOView :address="address" :transactions="t" />
+              <UTXOView :address="address" :transactions="t"/>
             </div>
-          </transition-group>
+          </TransitionGroup>
         </div>
-        <TransfersView v-else :address="address" :list-transactions="transactions" />
+        <TransfersView v-else :address="address" :list-transactions="transactions"/>
       </div>
     </div>
   </Collapse>

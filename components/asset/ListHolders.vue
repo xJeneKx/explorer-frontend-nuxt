@@ -54,13 +54,15 @@ function prepareDataForPieFromHolders(holders) {
   return data;
 }
 
-onBeforeMount(() => {
+function initHoldersData() {
   paramsForPie.value = [];
   lEndHolders.value = props.endHolders;
   lOffsetForHolders.value = props.offsetForHolders;
   listHolders.value = [...props.holders];
   paramsForPie.value = prepareDataForPieFromHolders(props.holders);
-});
+}
+
+initHoldersData();
 
 watch(width, () => {
   if (!chart.value) return;

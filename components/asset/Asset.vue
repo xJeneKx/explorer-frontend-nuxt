@@ -133,9 +133,9 @@ watch(rates, () => {
   }
 });
 
-watch(() => route.params.asset, urlHandler, {
-  immediate: true,
-});
+await urlHandler();
+
+watch(() => route.params.asset, urlHandler);
 
 function back() {
   if (lastUnit.value) {
@@ -206,12 +206,12 @@ function back() {
             :supply="data.supply"
           />
           <PaymentList
-            class="mt-12"
-            ref="PL"
-            :unit-assets="data.transactionsData.unitAssets"
-            :obj-transactions="data.transactionsData.objTransactions"
-            :address="null"
-            :view="view"
+              class="mt-12"
+              ref="PL"
+              :unit-assets="data.transactionsData.unitAssets"
+              :obj-transactions="data.transactionsData.objTransactions"
+              :address="null"
+              :view="view"
           />
         </template>
       </div>

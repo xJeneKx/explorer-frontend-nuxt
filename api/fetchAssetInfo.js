@@ -1,5 +1,3 @@
-import axios from "axios";
-import { storeToRefs } from "pinia";
 import { useGlobalStateStore } from "../stores/globalState";
 import { EventNames } from "../enum/eventEnums";
 
@@ -21,9 +19,10 @@ export default async function fetchAssetInfo(socket, asset, nextPageParams) {
       socket.emit(EventNames.GetAssetData, { asset }, resolve);
     });
   } else {
-    const { data } = await axios.get(`/api/asset/${encodeURIComponent(asset)}/${type}`, {
+    const data = await $fetch(`https://explorer.obyte.org/api/asset/${encodeURIComponent(asset)}/${type}`, {
       params: { ...nextPageParams },
     });
+    
     return data;
   }
 }

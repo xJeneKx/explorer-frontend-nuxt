@@ -14,8 +14,9 @@ if (props.type === "asset") {
 }
 
 function prepareLink(link) {
-  if (link.startsWith("/")) {
-    return link.replace("/", "%2F");
+  //ToDo: fix nuxt routing
+  if (link.includes("/")) {
+    return link.replaceAll("/", "%2F");
   }
 
   return link;
@@ -23,9 +24,9 @@ function prepareLink(link) {
 </script>
 
 <template>
-  <router-link class="link link-hover text-blue-500" :to="path + prepareLink(link)">
+  <NuxtLink class="link link-hover text-blue-500" :to="path + prepareLink(link)">
     <slot></slot>
-  </router-link>
+  </NuxtLink>
 </template>
 
 <style scoped></style>
