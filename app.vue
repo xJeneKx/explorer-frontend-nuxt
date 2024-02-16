@@ -43,6 +43,24 @@ function checkHashAndRedirect() {
   }
 }
 
+useHead({
+  htmlAttrs: {
+    "data-theme": "light",
+  },
+  script: [
+    {
+      type: 'module',
+      src: '/js/cytoscape.min.js'
+    },
+    {
+      type: 'module',
+      src: '/js/dagre.min.js'
+    },
+  ]
+})
+
+
+
 onBeforeMount(() => {
   checkHashAndRedirect();
 });

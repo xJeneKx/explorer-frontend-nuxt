@@ -16,6 +16,13 @@ const { $socket } = useNuxtApp();
 const router = useRouter();
 const route = useRoute();
 
+definePageMeta({
+  path: "/:unit(.*)?",
+  name: "home",
+  keepalive: true,
+  key: 'unit',
+})
+
 async function getUnitInfo(unit) {
   if (info && info.unit === unit) return;
 
@@ -43,7 +50,9 @@ const getUnitInformation = async () => {
   // await getLastUnits();
 }
 
-await getUnitInformation();
+if (!process.client) {
+  await getUnitInformation();
+}
 
 onMounted(() => {
   document.body.classList.add("overscroll-none", "overflow-hidden");

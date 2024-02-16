@@ -1,7 +1,8 @@
 export const useGlobalStateStore = defineStore("globalState", {
   state: () => {
+    const viewInCookie = useCookie("T_VIEW")
     return {
-      view: "Transfers",
+      view: viewInCookie.value || "Transfers",
       lastUnit: "",
       searchInputFocused: false,
       wsConnected: false,

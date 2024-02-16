@@ -14,9 +14,8 @@ if (props.type === "asset") {
 }
 
 function prepareLink(link) {
-  //ToDo: fix nuxt routing
-  if (link.includes("/")) {
-    return link.replaceAll("/", "%2F");
+  if (link.startsWith("/")) {
+    return link.replace("/", "%2F");
   }
 
   return link;

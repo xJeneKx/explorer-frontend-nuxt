@@ -13,11 +13,13 @@ import ObyteLogo from "~/components/icons/ObyteLogo.vue";
 const { t } = useI18n();
 const router = useRouter();
 
+const viewInCookie = useCookie("T_VIEW");
+
 const globalState = useGlobalStateStore();
 const { assetNames } = storeToRefs(useAssetNamesStore());
 
 const searchValue = ref("");
-const view = ref("Transfers");
+const view = ref(viewInCookie.value || "Transfers");
 const SI = ref();
 const autoComplete = ref();
 
@@ -63,11 +65,11 @@ function keyDown(e) {
 
 watch(view, () => {
   globalState.setView(view.value);
-  localStorage.setItem("T_VIEW", view.value);
+  viewInCookie.value = view.value;
 });
 
 onBeforeMount(() => {
-  let v = localStorage.getItem("T_VIEW") || "Transfers";
+  let v = viewInCookie.value || "Transfers";
   if (!v || (v !== "Transfers" && v !== "UTXO")) {
     v = "Transfers";
   }

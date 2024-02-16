@@ -32,9 +32,7 @@ function out() {
   }, 250);
 }
 
-onMounted(() => {
-  updValue();
-});
+updValue();
 </script>
 
 <template>

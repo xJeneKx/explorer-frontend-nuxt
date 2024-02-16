@@ -105,6 +105,9 @@ setEmitHandler((name, data) => {
 });
 
 setClickHandler((unit) => {
+  if (unit.startsWith("/")) {
+     unit = unit.replace("/", "%2F");
+  }
   router.push(`/${unit}`);
 });
 
@@ -156,21 +159,6 @@ onMounted(() => {
   }
   getLastUnits();
 });
-
-onBeforeMount(() => {
-  useHead({
-    script: [
-      {
-        type: 'module',
-        src: 'js/cytoscape.min.js'
-      },
-      {
-        type: 'module',
-        src: 'js/dagre.min.js'
-      },
-    ]
-  })
-})
 
 
 onUnmounted(() => {

@@ -87,6 +87,7 @@ window.addEventListener("resize", function () {
 function convertPosPanToPosScroll(posY, topPos) {
   if (!posY) posY = _cy.pan("y");
   if (topPos === undefined) topPos = scrollTopPos;
+  if (!scroll) return;
   return scroll.offsetHeight / 2 - topPos - posY;
 }
 
@@ -104,6 +105,7 @@ function updateScrollHeight() {
   const unitTopPos = _cy.getCenterPan(_cy.getElementById(nodes[0].data.unit)).y;
   const unitLowPos = _cy.getCenterPan(_cy.getElementById(nodes[nodes.length - 1].data.unit)).y;
   scrollTopPos = convertPosPanToPosScroll(unitTopPos, 0);
+  if(!document.getElementById("scrollBody")) return;
   document.getElementById("scrollBody").style.height =
     convertPosPanToPosScroll(unitLowPos - unitTopPos, 0) + scroll.offsetHeight / 2;
   setTimeout(function () {
