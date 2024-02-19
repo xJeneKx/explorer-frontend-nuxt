@@ -24,6 +24,7 @@ export default defineNuxtConfig({
       },
       "/socket.io": {
         target: `https://explorer.obyte.org`,
+        ws: true
       },
     }
   },

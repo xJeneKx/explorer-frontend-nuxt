@@ -47,8 +47,15 @@ const title = computed(() => {
   }${desc}`;
 });
 useHead({
-  title,
-});
+  title: title,
+  meta: [
+    { name: "description", content: title },
+    { name: "og:title", content: title },
+    { name: "og:description", content: title },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: title },
+  ],
+})
 
 function assetInfoHandler(_data) {
   rawData.value = _data;

@@ -6,6 +6,7 @@ import UnitMain from "~/components/unit/UnitMain.vue";
 import fetchUnitInfo from "~/api/fetchUnitInfo.js";
 import { useGlobalStateStore } from "~/stores/globalState.js";
 import { useInfoStore } from "~/stores/info.js";
+import { desc } from "~/configs/meta.js";
 
 const globalState = useGlobalStateStore();
 const infoStore = useInfoStore();
@@ -21,6 +22,18 @@ definePageMeta({
   name: "home",
   keepalive: true,
   key: 'unit',
+})
+
+const title = (route.params.unit ? `Unit ${route.params.unit} details on Obyte DAG chain | ` : '') + desc;
+useHead({
+  title: title,
+  meta: [
+    { name: "description", content: title },
+    { name: "og:title", content: title },
+    { name: "og:description", content: title },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: title },
+  ],
 })
 
 async function getUnitInfo(unit) {

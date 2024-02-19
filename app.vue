@@ -72,15 +72,9 @@ onBeforeMount(() => {
     <Link rel="icon" href="/favicon.ico" />
     <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <Link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css"/>
-    <Title>{og_text}</Title>
-    <Meta name="description" content="{og_text}"/>
-    <Meta property="og:title" content="{og_text}"/>
-    <Meta property="og:description" content="{og_text}"/>
     <Meta property="og:type" content="website"/>
     <Meta property="og:image" content="https://explorer.obyte.org/logoForOg.png"/>
     <Meta name="twitter:card" content="summary_large_image"/>
-    <Meta name="twitter:title" content="{og_text}"/>
-    <Meta name="twitter:description" content="{og_text}"/>
     <Meta name="twitter:image" content="https://explorer.obyte.org/logoForOg.png"/>
     <Link rel="icon" href="/icon_16x16@2x.png" />
   </Head>

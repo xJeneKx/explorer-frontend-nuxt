@@ -1,7 +1,6 @@
 <script setup>
 import { ArrowCircleUpIcon, ExclamationIcon } from "@heroicons/vue/outline";
 import { EventNames } from "~/enum/eventEnums";
-import { desc } from "~/configs/meta";
 
 import {
   highlightNode,
@@ -35,14 +34,6 @@ const alertShown = ref(false);
 const alertTimeout = ref();
 
 const { $socket } = useNuxtApp();
-const title = computed(() => {
-  return `${
-    route.params.unit ? `Unit ${route.params.unit} details on Obyte DAG chain | ` : ""
-  }${desc}`;
-});
-useHead({
-  title,
-});
 
 function updDag(data) {
   updDagHandler(data);

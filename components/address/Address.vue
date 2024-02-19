@@ -33,6 +33,21 @@ const { t } = useI18n();
 const router = useRouter();
 const route = useRoute();
 
+const title = (route.params.address ? 
+    `Address ${route.params.address} transactions and portfolio | ` : '') + 
+    desc;
+
+useHead({
+  title: title,
+  meta: [
+    { name: "description", content: title },
+    { name: "og:title", content: title },
+    { name: "og:description", content: title },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: title },
+  ],
+})
+
 const isLoaded = ref(false);
 const data = ref({});
 const notFound = ref(false);
@@ -52,16 +67,6 @@ const { height: wHeigth } = useWindowSize();
 const { height } = useElementSize(el);
 const { y } = useWindowScroll();
 
-const title = computed(() => {
-  return `${
-    !notFound.value && data.value.address
-      ? `Address ${data.value.address} transactions and portfolio | `
-      : ""
-  }${desc}`;
-});
-useHead({
-  title,
-});
 
 function prepareDataForPieFromBalances(balances) {
   let data = [];
