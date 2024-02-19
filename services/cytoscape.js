@@ -81,6 +81,7 @@ export function setCurrentUnit(unit) {
 const scroll = document.getElementById("scroll");
 
 window.addEventListener("resize", function () {
+  if (!scroll) return;
   if (_cy) scroll.scrollTop = convertPosPanToPosScroll();
 });
 
@@ -106,6 +107,7 @@ function updateScrollHeight() {
   const unitLowPos = _cy.getCenterPan(_cy.getElementById(nodes[nodes.length - 1].data.unit)).y;
   scrollTopPos = convertPosPanToPosScroll(unitTopPos, 0);
   if(!document.getElementById("scrollBody")) return;
+  if(!scroll) return;
   document.getElementById("scrollBody").style.height =
     convertPosPanToPosScroll(unitLowPos - unitTopPos, 0) + scroll.offsetHeight / 2;
   setTimeout(function () {
@@ -307,6 +309,9 @@ function cyPan() {
   ) {
     getPrev();
   }
+  
+  if (!scroll) return;
+  
   scroll.scrollTop = convertPosPanToPosScroll();
 }
 
@@ -318,6 +323,9 @@ function cyWheel(event) {
   } else if (deltaY > 0) {
     scrollDown();
   }
+  
+  if (!scroll) return;
+  
   scroll.scrollTop = convertPosPanToPosScroll();
 }
 

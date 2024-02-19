@@ -1,7 +1,6 @@
 <script setup>
 import { getDateFromSeconds, getDurationFromSeconds } from "~/helpers/date.js";
 import { prettifyJson } from "~/helpers/text.js";
-import { useI18n } from "vue-i18n";
 import { useWindowSize } from "@vueuse/core";
 
 import Collapse from "~/components/elements/Collapse.vue";

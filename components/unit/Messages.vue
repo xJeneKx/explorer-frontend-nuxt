@@ -1,5 +1,4 @@
 <script setup>
-import { useI18n } from "vue-i18n";
 import { prettifyJson } from "~/helpers/text";
 
 import Collapse from "~/components/elements/Collapse.vue";
@@ -46,7 +45,7 @@ function getTitle(app) {
   }
 }
 
-function generateMesseges() {
+function generateMessages() {
   const msgs = [];
   let shownHiddenPayments = false;
   
@@ -136,12 +135,10 @@ function generateMesseges() {
   messagesForRender.value = msgs;
 }
 
-onMounted(() => {
-  generateMesseges();
-});
+generateMessages();
 
 watch(view, () => {
-  generateMesseges();
+  generateMessages();
 });
 </script>
 
