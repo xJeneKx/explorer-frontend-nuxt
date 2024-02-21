@@ -15,7 +15,7 @@ function toggle() {
 </script>
 
 <template>
-  <div class="mt-4">
+  <div>
     <div
       class="cursor-pointer text-gray-600 hover:text-gray-900 inline-flex align-middle"
       @click="toggle"

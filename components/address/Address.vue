@@ -300,7 +300,7 @@ function back() {
                 </option>
               </select>
             </div>
-            <UnspentOutputs v-if="view === 'UTXO'" :unspent="data.unspent"/>
+            <UnspentOutputs v-if="view === 'UTXO'" class="mt-4" :unspent="data.unspent"/>
           </div>
           <div class="flex justify-center">
             <BalancesChart
