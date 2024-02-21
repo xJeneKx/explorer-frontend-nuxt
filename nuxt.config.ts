@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
   build: {
-    transpile: ['echarts'],
+    transpile: ['echarts', 'resize-detector'],
   },
   i18n: {
     vueI18n: './i18n.config.ts'
