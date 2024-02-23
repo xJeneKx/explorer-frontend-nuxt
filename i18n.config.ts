@@ -4,7 +4,7 @@ import cn from "~/locales/cn.json";
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locale: import.meta.env.VITE_LANG,
+  locale: import.meta.env.VITE_LANG || 'en',
   fallbackLocale: "en",
   messages: {
     en,
