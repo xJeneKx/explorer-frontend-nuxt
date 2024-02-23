@@ -48,6 +48,8 @@ function getTitle(app) {
 function generateMessages() {
   const msgs = [];
   let shownHiddenPayments = false;
+  messagesForRender.value = [];
+  transfersListForRender.value = [];
   
   info.value.messages.forEach((m) => {
     if (!m.payload) {

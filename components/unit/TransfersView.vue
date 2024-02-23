@@ -29,8 +29,10 @@ function addToTempPayments(tempPayments, to, message, decimals) {
   });
 }
 
-watch(props.message, () => {
+function processMessagesToPayments() {
   const tempPayments = [];
+  payments.value = [];
+
   props.message.forEach((message) => {
     const tempIO = { from: {}, to: {} };
 
@@ -79,7 +81,11 @@ watch(props.message, () => {
   });
 
   payments.value = tempPayments;
-});
+}
+
+processMessagesToPayments();
+
+watch(props.message, processMessagesToPayments);
 </script>
 
 <template>
