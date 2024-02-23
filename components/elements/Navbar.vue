@@ -1,5 +1,7 @@
 <script setup>
 import { useI18n } from "vue-i18n";
+import { unref } from "vue";
+import { serialize } from 'cookie-es'
 
 import AutoComplete from "@tarekraafat/autocomplete.js";
 import IconDiscord from "~/components/icons/IconDiscord.vue";
@@ -13,7 +15,9 @@ import ObyteLogo from "~/components/icons/ObyteLogo.vue";
 const { t } = useI18n();
 const router = useRouter();
 
-const viewInCookie = useCookie("T_VIEW");
+const viewInCookie = useCookie("T_VIEW", {
+  maxAge: 31536000,
+});
 
 const globalState = useGlobalStateStore();
 const { assetNames } = storeToRefs(useAssetNamesStore());
@@ -64,12 +68,18 @@ function keyDown(e) {
 }
 
 watch(view, () => {
-  globalState.setView(view.value);
-  viewInCookie.value = view.value;
+  const value = unref(view);
+  globalState.setView(value);
+  viewInCookie.value = value;
+  if (!process.server) {
+    document.cookie = serialize("T_VIEW", value, {
+      maxAge: 31536000,
+    });
+  }
 });
 
 onBeforeMount(() => {
-  let v = viewInCookie.value || "Transfers";
+  let v = unref(viewInCookie.value) || "Transfers";
   if (!v || (v !== "Transfers" && v !== "UTXO")) {
     v = "Transfers";
   }

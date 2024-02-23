@@ -1,8 +1,10 @@
+import { unref } from "vue";
+
 export const useGlobalStateStore = defineStore("globalState", {
   state: () => {
     const viewInCookie = useCookie("T_VIEW")
     return {
-      view: viewInCookie.value || "Transfers",
+      view: unref(viewInCookie.value) || "Transfers",
       lastUnit: "",
       searchInputFocused: false,
       wsConnected: false,
